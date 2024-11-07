@@ -16,9 +16,10 @@ spec:
     spec:
       containers:
       - name: go
-        image: 183295423434.dkr.ecr.ap-south-1.amazonaws.com/goapp:latest
+        image: 183295423434.dkr.ecr.ap-south-1.amazonaws.com/goapp:{{ .Values.image.tag }}
+        imagePullPolicy: Always
         ports:
         - containerPort: 8083
       imagePullSecrets:
-          - name: secret
+          - name: regcred
   
