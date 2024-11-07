@@ -1,0 +1,26 @@
+name: CICD
+
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    run-on: ubuntu-latest
+    
+    steps:
+    - name: checkoutstage
+      uses: actions/checkout@v4use
+      with:
+        path: main
+    - name: Set up-Go env
+      uses: actions/setup-go@v5
+      with:
+        go-version: '1.23'
+    - run: go version
+
+    - name: Build-phase
+      uses: go build -o go
+    
+    - name: test
+      uses: go test
